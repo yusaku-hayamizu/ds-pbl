@@ -46,8 +46,8 @@ $ iperf3 -c paris.bbr.iperf.bytel.fr
 ##### Setup WSL
 - Windows で iperf を実行する手順はいくつか存在しますが、本授業では今後のためにも Windows Subsystem for Linux (WSL) を利用する方法を記述します。
 1. Windows の検索で「機能の有効化」を入力し、「Windows の機能の有効化または無効化」を選択
-1. 「Linux 用Windows サブシステムと「仮想マシンプラットフォーム」のチェックボックスをチェック
-1. Windows Update を実行（WSLのupdateがインストールされる）
+1. 「Linux 用 Windows サブシステム」と「仮想マシンプラットフォーム」のチェックボックスをチェック
+1. Windows Update を実行（WSL の update がインストールされる）
 1. PowerShell でコマンド ```wsl --install -d Ubuntu``` を入力
 1. インストール完了後、一旦 Ubuntu を起動（「Installing, this may take a few minutes...」 と表示があり、しばらく待つ）
 1. エラーが発生する場合、PowerShell を管理者権限で実行し、コマンド ```wsl --update``` を実行
