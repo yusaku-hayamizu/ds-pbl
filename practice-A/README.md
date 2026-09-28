@@ -225,3 +225,33 @@ $ cat output.txt | awk '{print $5 " " $7}' | head -n 8 | tail -n 7 >output2.txt 
 ```
 - Linux コマンドは非常に奥が深い強力なツールです。使いこなすことで、研究データの整理・統計を自動化・省力化できます。是非、「Linux, コマンド, bash」などのキーワードで色々調べて勉強し、使ってみましょう。
 
+
+### インターネットにおける遅延 (RTT) の計測
+- 上記の ping コマンド ```ping -n -c 7 -i 0.1 aaa.com >ping2aaa.com.log 2>&1``` を利用して、複数のサーバを宛先として選択し、複数箇所の統計情報を取得しましょう。最低3つ以上のサーバに対して計測すること、及び、標本（サンプル）数はそれぞれ 2000 以上とすること。
+- 宛先となるサーバはインターネット上のノード（サーバやルータを含む総称）であればどこでも構いませんが、サンプルとして以下のリンストを表示しておきますが、以下に限りません。上記コマンドの```aaa.com```の部分を置き換える形で実行して下さい。
+- ping 宛先サーバ候補リスト
+
+| # | 代表地域 | 対象 | 種別 | ping先候補 |
+|---:|---|---|---|---|
+| 1 | 日本・東京 | NICT | 国立研究所 | `ntp.nict.go.jp` |
+| 2 | 日本・東京 | IIJ | インターネットサービス企業 | `iij.ad.jp` |
+| 3 | 日本・東京 | NTT | 通信企業 | `ntt.com` |
+| 4 | 韓国 | LG | 半導体企業 | `lg.com` |
+| 5 | シンガポール | NUS | 大学 | `nus.edu.sg` |
+| 6 | アラブ首長国連邦 | ADNEC | 会議場 | `www.adnec.ae` |
+| 7 | オーストラリア | シドニー大学 | 大学 | `sydney.edu.au ` |
+| 8 | ニュージーランド | University of Auckland | 大学 | `auckland.ac.nz` |
+| 9 | 米国東部 | MIT | 大学 | `mit.edu` |
+| 10 | 米国西部 | Stanford University | 大学 | `stanford.edu` |
+| 11 | 米国西部 | UCLA | 大学 | `ucla.edu` |
+| 12 | カナダ | University of Toronto | 大学 | `utoronto.ca` |
+| 13 | ブラジル | University of São Paulo | 大学 | `www.usp.br` |
+| 14 | チリ | University of Chile | 大学 | `www.uchile.cl` |
+| 15 | 英国 | University of Cambridge  | 大学 | `cam.ac.uk ` |
+| 16 | スイス | ETH Zürich | 大学 | `ethz.ch` |
+| 17 | ドイツ | SAP | IT企業 | `www.sap.com` |
+| 18 | フランス | Orange | 通信企業 | `www.orange.fr` |
+| 19 | 南アフリカ | University of Cape Town | 大学 | `www.uct.ac.za` |
+| 20 | ケニア | University of Nairobi | 大学 | `www.uonbi.ac.ke` |
+
+
