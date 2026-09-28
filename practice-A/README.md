@@ -77,10 +77,9 @@ Request timeout for icmp_seq 0
 Request timeout for icmp_seq 1
 ...
 ```
-- Wi-Fi/有線接続できていても echo を受信できない場合、IPアドレスの設定が正しく設定できているかを確認するため、以下のコマンドのどちらかを入力してください。
+- Wi-Fi/有線接続できていても echo を受信できない場合、IPアドレスの設定が正しく設定できているかを確認するため、以下のコマンドを入力してください。
 ```console
-$ ifconfig
-$ ip addr
+$ ipconfig
 ```
 
 
