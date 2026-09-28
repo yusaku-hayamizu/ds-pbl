@@ -109,7 +109,7 @@ echo "Done."
 ```
 - 実行時は、以下のように引数を入力します。
 ```console
-$ ./iperf-test.bash "speedtest.milkywan.fr" 5 9200 "output.txt"
+$ ./iperf-test.bash speedtest.milkywan.fr 5 9200 "output.txt"
 ```
 - 引数の入力数が足りない場合、shell script は正しく動作しません。以下のように、例外処理を入れておくことで、入力ミスによるエラーを未然に防げます。
 ```shell
