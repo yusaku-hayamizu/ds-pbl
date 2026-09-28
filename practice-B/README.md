@@ -89,7 +89,7 @@ output_file="output.txt"
 
 echo "Starting iperf3 measurement..."
 iperf3 -c speedtest.milkywan.fr -t ${duration} -p ${port_num} >iperf.txt 2>&1
-cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n 5 >${output_file} 2>&1
+cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n ${duration} >${output_file} 2>&1
 echo "Done."
 ```
 - このように変数をヘッダ部にまとめて書くことで、コードの可読性を向上させ、条件変更する際のミス（ヒューマンエラー）を減らせます。
@@ -102,7 +102,7 @@ output_file=$3
 
 echo "Starting iperf3 measurement..."
 iperf3 -c speedtest.milkywan.fr -t ${duration} -p ${port_num} >iperf.txt 2>&1
-cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n 5 >${output_file} 2>&1
+cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n ${duration} >${output_file} 2>&1
 echo "Done."
 ```
 - 実行時は、以下のように引数を入力します。
