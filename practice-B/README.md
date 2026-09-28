@@ -83,12 +83,13 @@ $ ./iperf-test.bash
 - また、bash では変数（パラメータ）を定義することも可能です。計測時間を変更したい場合、
 ```shell
 #!/bin/bash
-duration="5"
+server="speedtest.milkywan.fr"
 port_num="9200"
+duration="5"
 output_file="output.txt"
 
 echo "Starting iperf3 measurement..."
-iperf3 -c speedtest.milkywan.fr -t ${duration} -p ${port_num} >iperf.txt 2>&1
+iperf3 -c ${server} -p ${port_num} -t ${duration} >iperf.txt 2>&1
 cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n ${duration} >${output_file} 2>&1
 echo "Done."
 ```
@@ -96,39 +97,51 @@ echo "Done."
 - また、shell では、コマンドライン引数も利用できます。コマンドラインの入力は ```$1```（第1引数）、```$2``` 第2引数という形で、追加できます。これを利用して上記プログラムを書き換えると、
 ```shell
 #!/bin/bash
-duration=$1
-port_num=$2
-output_file=$3
+server=$1
+duration=$2
+port_num=$3
+output_file=$4
 
 echo "Starting iperf3 measurement..."
-iperf3 -c speedtest.milkywan.fr -t ${duration} -p ${port_num} >iperf.txt 2>&1
+iperf3 -c ${server} -p ${port_num} -t ${duration} >iperf.txt 2>&1
 cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n ${duration} >${output_file} 2>&1
 echo "Done."
 ```
 - 実行時は、以下のように引数を入力します。
 ```console
-$ ./iperf-test.bash 5 9200 "output.txt"
+$ ./iperf-test.bash "speedtest.milkywan.fr" 5 9200 "output.txt"
 ```
 - 引数の入力数が足りない場合、shell script は正しく動作しません。以下のように、例外処理を入れておくことで、入力ミスによるエラーを未然に防げます。
 ```shell
 #!/bin/bash
-if [ "$#" -lt 3 ]; then
+if [ "$#" -lt 4 ]; then
     echo "Error: the number of commandline arguments is less than required."
-    echo "Usage: $0 <duration> <port_num> <output_file>"
+    echo "Usage: $0 <server_hostname/ip> <duration> <port_num> <output_file>"
     exit 1
 fi
 
-duration=$1
-port_num=$2
-output_file=$3
+server=$1
+duration=$2
+port_num=$3
+output_file=$4
 
 echo "Starting iperf3 measurement..."
-iperf3 -c speedtest.milkywan.fr -t ${duration} -p ${port_num} >iperf.txt 2>&1
+iperf3 -c ${server} -p ${port_num} -t ${duration} >iperf.txt 2>&1
 cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n ${duration} >${output_file} 2>&1
 echo "Done."
 
 exit 0
 ```
+
+
+### 
+
+
+
+
+
+
+
 
 
 
