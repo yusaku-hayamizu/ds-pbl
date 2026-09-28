@@ -249,9 +249,9 @@ $ cat output.txt | awk '{print $5 " " $7}' | head -n 8 | tail -n 7 >output2.txt 
 | 14 | チリ | University of Chile | 大学 | `www.uchile.cl` |
 | 15 | 英国 | University of Cambridge  | 大学 | `cam.ac.uk ` |
 | 16 | スイス | ETH Zürich | 大学 | `ethz.ch` |
-| 17 | ドイツ | SAP | IT企業 | `www.sap.com` |
-| 18 | フランス | Orange | 通信企業 | `www.orange.fr` |
-| 19 | 南アフリカ | University of Cape Town | 大学 | `www.uct.ac.za` |
-| 20 | ケニア | University of Nairobi | 大学 | `www.uonbi.ac.ke` |
+| 17 | ドイツ | Deutsche Telekom | 通信企業 | `telekom.com` |
+| 18 | フランス | Orange | 通信企業 | `orange.fr` |
+| 19 | 南アフリカ | CapeTown Web Hosting | 通信企業 | `capetown-web-hosting.co.za` |
+| 20 | ケニア | University of Nairobi | 大学 | `uonbi.ac.ke` |
 
 

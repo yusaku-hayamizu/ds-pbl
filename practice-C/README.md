@@ -18,6 +18,12 @@
 $ sudo apt update
 $ sudo apt install python3
 ```
+- インストールされた python のバージョンを確認
+```console
+$ python3 --version
+```
+
+
 
 ### macOS
 ### 
