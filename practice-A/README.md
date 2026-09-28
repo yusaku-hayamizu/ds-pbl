@@ -234,7 +234,7 @@ $ cat output.txt | awk '{print $5 " " $7}' | head -n 8 | tail -n 7 >output2.txt 
 | # | 代表地域 | 対象 | 種別 | ping先候補 |
 |---:|---|---|---|---|
 | 1 | 日本・東京 | NICT | 国立研究所 | `ntp.nict.go.jp` |
-| 2 | 日本・東京 | IIJ | インターネットサービス企業 | `iij.ad.jp` |
+| 2 | 日本・東京 | IIJ | 通信企業 | `iij.ad.jp` |
 | 3 | 日本・東京 | NTT | 通信企業 | `ntt.com` |
 | 4 | 韓国 | LG | 半導体企業 | `lg.com` |
 | 5 | シンガポール | NUS | 大学 | `nus.edu.sg` |
