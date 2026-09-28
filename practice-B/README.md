@@ -39,6 +39,7 @@ iperf Done.
 ```
 - ```speedtest.milkywan.fr``` の場合、9200~9240 のポート番号で待ち受けているので、好きなものを選択しましょう。
 - ポート番号とは、アプリケーションプロセスが持つ固有の通信識別子です。IP アドレスと組み合わせて利用することで、ネットワークサービスを多重化（一つのIPアドレスで複数のアプリケーションを起動し通信）しています。
+- ```Transfer``` は時間区間に送信されたデータ量 [Byte] を示し、```Bitrate``` はスループットを示します。
 - ping の時と同様に、適宜オプションを設定し、結果をファイル出力しましょう。
 ```console
 $ iperf3 -c speedtest.milkywan.fr -t 5 -p 9200 >iperf.txt 2>&1
@@ -54,10 +55,80 @@ $ cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n 5
 3.00-4.01 46.0
 4.01-5.01 19.9
 ```
-- ```grep``` は ```cat``` で出力する文字列の中から指定したものと一致する行を検索するコマンドで、こちらもよくデータ処理に使われます。
+- ```grep``` は ```cat``` で出力する文字列の中から指定したものと一致する行を検索するコマンドで、こちらもよくLinux のデータ処理で使われます。
 - 上記例では、```grep "-"``` とすることで、時間区間 "0.00-1.01" のような出力の部分を含む文字列を抽出できます。
-- 前回の ```head/tail``` と組み合わせて、自分が欲しいデータの形式に整形していきましょう。
-- この例では、第一項目が時間区間、第二項目が ```Bitrate```（スループット） 部分を抽出しています。上記は 5 s 間のサンプルですが、100 s など、統計情報として十分な結果になるように適宜オプションを指定して下さい。
+- 前回の ```head/tail``` と組み合わせて利用することで、自分が欲しいデータの形式に整形していきましょう。
+- この例では、第一項目の時間区間、第二項目の ```Bitrate```（スループット） 部分を抽出しています。上記は 5 s 間のサンプルですが、100 s など、統計情報として十分な結果になるように適宜オプションを指定して下さい。
+
+### shell script による統計自動化
+- ネットワーク計測では、ある測定条件において、パラメータ（宛先、統計時間など）を少しずつ変更しながら繰り返し計測を行います。
+- このような反復動作はコンピュータの得意なところで、shell script による自動化により効率的に作業を進められる可能性があります。
+- 以下に、iperf の実行から awk によるデータ加工処理、ファイル出力までを一度に実現する場合のサンプルスクリプトを記載します。以下のスクリプトを ```iperf-test.bash``` などのファイル名をつけて保存しましょう。
+```shell
+#!/bin/bash
+
+echo "Starting iperf3 measurement..."
+iperf3 -c speedtest.milkywan.fr -t 5 -p 9200 >iperf.txt 2>&1
+cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n 5 >iperf2.txt 2>&1
+echo "Done."
+```
+- 実行時は、コマンドラインで、
+```console
+$ bash iperf-test.bash
+もしくは、以下のようにプログラムの実行権限を付加した後、
+$ chmod +x iperf-test.bash
+$ ./iperf-test.bash
+```
+- とすることで、作成した shell スクリプトを実行できます。
+- また、bash では変数（パラメータ）を定義することも可能です。計測時間を変更したい場合、
+```shell
+#!/bin/bash
+duration="5"
+port_num="9200"
+output_file="output.txt"
+
+echo "Starting iperf3 measurement..."
+iperf3 -c speedtest.milkywan.fr -t ${duration} -p ${port_num} >iperf.txt 2>&1
+cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n 5 >output.txt 2>&1
+echo "Done."
+```
+- このように変数をヘッダ部にまとめて書くことで、コードの可読性を向上させ、条件変更する際のミス（ヒューマンエラー）を減らせます。
+- また、shell では、コマンドライン引数も利用できます。コマンドラインの入力は ```$1```（第1引数）、```$2``` 第2引数という形で、追加できます。これを利用して上記プログラムを書き換えると、
+```shell
+#!/bin/bash
+duration=$1
+port_num=$2
+output_file=$3
+
+echo "Starting iperf3 measurement..."
+iperf3 -c speedtest.milkywan.fr -t ${duration} -p ${port_num} >iperf.txt 2>&1
+cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n 5 >output.txt 2>&1
+echo "Done."
+```
+- 実行時は、以下のように引数を入力します。
+```console
+$ ./iperf-test.bash 5 9200 "output.txt"
+```
+- 引数の入力数が足りない場合、shell script は正しく動作しません。以下のように、例外処理を入れておくことで、入力ミスによるエラーを未然に防げます。
+```shell
+#!/bin/bash
+if [ "$#" -lt 3 ]; then
+    echo "Error: the number of commandline arguments is less than required."
+    echo "Usage: $0 <duration> <port_num> <output_file>"
+    exit 1
+fi
+
+duration=$1
+port_num=$2
+output_file=$3
+
+echo "Starting iperf3 measurement..."
+iperf3 -c speedtest.milkywan.fr -t ${duration} -p ${port_num} >iperf.txt 2>&1
+cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n ${duration} >$output_file 2>&1
+echo "Done."
+
+exit 0
+```
 
 
 
