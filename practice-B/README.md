@@ -167,12 +167,11 @@ $ netstat -anlt | grep LISTEN
 #### iperf client での実験（学生）
 - ラズパイのIPアドレスを指定して、iperf3 でスループットを計測してみましょう。
 ```console
-$ iperf3 -c <ラズパイのIPアドレス> -t 5 -p <自分のポート番号> >iperf-pi.txt 2>&1
+$ iperf3 -c <ラズパイのIPアドレス> -t 10 -p <自分のポート番号> >iperf-pi.txt 2>&1
 ```
-- ラズパイの IP アドレスの調べ方は、ターミナルにて ```ifconfig``` もしくは、```ip addr``` で確認できます。デフォルトを ```10.0.0.1``` に設定しています。
-- また、LAN であれば local で名前解決できるので、```hostname``` を利用して、以下でも指定することが可能です。
+- ラズパイの IP アドレスの調べ方は、ターミナルにて ```ifconfig``` もしくは、```ip addr``` で確認できます。デフォルトを ```10.0.0.1``` に設定しています。また、LAN であれば local で名前解決できるので、```hostname``` を利用して、以下でも指定することが可能です。
 ```console
-$ iperf3 -c pi0.local -t 5 -p <自分のポート番号> >iperf-pi.txt 2>&1
+$ iperf3 -c pi0.local -t 10 -p <自分のポート番号> >iperf-pi.txt 2>&1
 ```
 #### ping でのRTT測定
 - ping についても同様で SSID ```pi0``` に Wi-Fi 接続した後、
