@@ -150,7 +150,7 @@ Connecting to host iperf.he.net, port 5201
 iperf Done.
 ```
 - 問題なくスループットの測定結果（Bitrate）が出力された場合、次の手順「Experiment」に進んでください。
-- 以下のようなエラーが発生する場合、[公開サーバ](https://iperf.fr/iperf-servers.php)の中から別のものを選択するなどして、いくつかサーバをトライしてみてください。※ サーバを変更する際は、ポート番号（Port）の値を適切な値に変えることを忘れずに
+- 以下のようなエラーが発生する場合、[公開サーバ](https://iperf.fr/iperf-servers.php)の中から別のものを選択するなどして、いくつかサーバをトライしてみてください。※ サーバを変更する際は、ポート番号（Port）の値を適切な値に変えることを忘れずに。
 ```console
 iperf3: error - the server is busy running a test. try again later
 ```
