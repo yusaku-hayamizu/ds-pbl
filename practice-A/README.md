@@ -116,7 +116,7 @@ $ iperf3 -c ping.online.net
 
 ##### Data Sync
 - Windows <-> Ubuntu 間のファイルのやり取り（同期）は、以下の手順で行います。
-1. エクスプローラのパス欄に \\wsl$ と入力
+1. エクスプローラのパス欄に \\wsl$ と入力、もしくは、エクスプローラの「ネットワーク」から「Ubuntu」を検索
 1. Ubuntu をクリックし Ubuntu/home/ユーザー名 の順に辿る
 - 今後、「Experiment」において結果を出力する際は、ここに出力されるので、適宜、windows 環境から参照する際は利用しましょう
 ##### Install iperf3 with apt
