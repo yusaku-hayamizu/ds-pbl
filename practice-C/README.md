@@ -9,31 +9,30 @@
 - KU WiFi, 有線 (LAN) 接続, スマホテザリング ※ データ通信量を消費します
 
 ### Python
-- version 3.12
+- version 3.14 を想定
 
 ## Install
 ### Windows(WSL/Ubuntu)
-- Ubuntu のターミナル上で ```apt``` を用いてライブラリをインストール
+- WSL を起動し、Ubuntu ターミナル上で ```apt``` を用いてライブラリをインストール
 ```console
 $ sudo apt update
-$ sudo apt install python3
+$ sudo apt install python3 python3-pip
 ```
 - インストールされた python のバージョンを確認
 ```console
 $ python3 --version
+Python 3.14.4
 ```
-
-
+- となればインストール完了（一番右のマイナーバージョンが違ってもOK）
+- python に必要なライブラリをインストール
+```console
+$ sudo apt install python3-numpy python3-pandas python3-scipy python3-matplotlib
+```
+<!-- ```console
+$ pip3 install numpy pandas scipy ruptures scikit-learn matplotlib
+``` -->
 
 ### macOS
-### 
 ```console
-brew install python@3.12
-
-```
-
-
-- python に必要なライブラリをインストールします。
-```console
-$ pip3 install numpy pandas scipy ruptures scikit-learn matplotlib
+brew install python@3.14
 ```
