@@ -24,7 +24,6 @@ $ python3 --version
 ```
 
 
-
 ### macOS
 ### 
 ```console
