@@ -1,5 +1,5 @@
 # Practice C: Python によるデータ分析
-## 想定動作環境
+## 0. 想定動作環境
 ### OS
 - Windows 11
 - Linux (Ubuntu 24.04) ※推奨
@@ -11,7 +11,7 @@
 ### Python
 - version 3.14 を想定
 
-## Install
+## 1. Install Python
 ### Windows(WSL/Ubuntu)
 - WSL を起動し、Ubuntu ターミナル上で ```apt``` を用いてライブラリをインストール
 ```console
@@ -31,8 +31,11 @@ $ sudo apt install python3-numpy python3-pandas python3-scipy python3-matplotlib
 <!-- ```console
 $ pip3 install numpy pandas scipy ruptures scikit-learn matplotlib
 ``` -->
-
 ### macOS
 ```console
 brew install python@3.14
 ```
+
+## 2. Visualization
+
+## 3. Data Analytics
