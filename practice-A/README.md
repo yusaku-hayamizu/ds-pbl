@@ -113,12 +113,14 @@ $ iperf3 -c ping.online.net
   - 上記でも解決しない場合、BIOS設定の変更が必要な可能性（BIOS の Virtualization Technology を Enable に変更）
 6. Ubuntu のユーザ作成の画面に遷移したら、Enter new UNIX username: では自分の名前を入力。基本的に自由に決めて良いが、半角英字で。Windows と同じが望ましい ※半角スペースは絶対に入れないこと
 1. Enter password: は原則 Windows と同じパスワードにすること
+- 上記手順が全て終わると、Ubuntu のユーザが作成され、ターミナルでログインできるようになります。Windows menu で WSL と検索して、WSL（青いペンギンのアイコン）をクリックして起動しましょう
 
 ##### Data Sync
 - Windows <-> Ubuntu 間のファイルのやり取り（同期）は、以下の手順で行います。
 1. エクスプローラのパス欄に \\wsl$ と入力、もしくは、エクスプローラの「ネットワーク」から「Ubuntu」を検索
 1. Ubuntu をクリックし Ubuntu/home/ユーザー名 の順に辿る
 - 今後、「Experiment」において結果を出力する際は、ここに出力されるので、適宜、windows 環境から参照する際は利用しましょう
+
 ##### Install iperf3 with apt
 - 以下のコマンドを実行し、ライブラリの更新と iperf3 をインストール
 ```console
@@ -126,6 +128,7 @@ $ sudo apt update
 $ sudo apt upgrade
 $ sudo apt install iperf3
 ```
+- インストール時に Iperf の auto start (OS 起動と同時に iperf のサーバ機能を自動でONするか）について聞かれますが、今回はサーバとしては利用せず、クライアントとしてのみ利用するため、本機能は OFFで良いでので、「NO」 を選びましょう。
 - インストールが完了したら、以下の実測コマンドを実行してみて下さい。
 ```console
 $ iperf3 -c iperf.he.net
