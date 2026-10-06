@@ -23,7 +23,6 @@ $ sudo apt install python3 python3-pip
 $ python3 --version
 Python 3.14.4
 ```
-<<<<<<< HEAD
 - となればインストール完了（一番右のマイナーバージョンが違ってもOK）
 - python に必要なライブラリをインストール
 ```console
@@ -32,9 +31,6 @@ $ sudo apt install python3-numpy python3-pandas python3-scipy python3-matplotlib
 <!-- ```console
 $ pip3 install numpy pandas scipy ruptures scikit-learn matplotlib
 ``` -->
-=======
-
->>>>>>> f63ea5b74b0a8058c529e49a3ef938d8ab984102
 
 ### macOS
 ```console
