@@ -98,8 +98,8 @@ echo "Done."
 ```shell
 #!/bin/bash
 server=$1
-duration=$2
-port_num=$3
+port_num=$2
+duration=$3
 output_file=$4
 
 echo "Starting iperf3 measurement..."
@@ -116,13 +116,13 @@ $ ./iperf-test.bash speedtest.milkywan.fr 5 9200 "output.txt"
 #!/bin/bash
 if [ "$#" -lt 4 ]; then
     echo "Error: the number of commandline arguments is less than required."
-    echo "Usage: $0 <server_hostname/ip> <duration> <port_num> <output_file>"
+    echo "Usage: $0 <server_hostname/ip> <port_num> <duration> <output_file>"
     exit 1
 fi
 
 server=$1
-duration=$2
-port_num=$3
+port_num=$2
+duration=$3
 output_file=$4
 
 echo "Starting iperf3 measurement..."
@@ -132,7 +132,6 @@ echo "Done."
 
 exit 0
 ```
-
 
 - 上記の ```iperf-test.bash``` を利用して、複数のiperf サーバを宛先として選択し、複数箇所の統計情報を取得しましょう。最低3つ以上の[公開サーバ](https://iperf.fr/iperf-servers.php)に対して計測すること、及び、統計時間はそれぞれ 100 [s] 以上とすること。
 
