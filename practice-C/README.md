@@ -217,10 +217,9 @@ if __name__ == "__main__":
 - 実行方法は以下の通りです。
 ```console
 $ python3 plot-iperf-thpt.py log_file # log_file 部分には取得した iperf3 データのファイル名 (例: ./iperf.log など) を入力しましょう
+```
 - 以下のようなグラフ（横軸: 経過時間、縦軸: スループット）が出力されることを確認しましょう。
 ![alt text](./fig/iperf-thpt.png)
-```
-
 ### 2.4 [sample script]
 ```python
 #!/usr/bin/env python3
