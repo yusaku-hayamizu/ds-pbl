@@ -41,7 +41,7 @@ brew install python@3.14
 
 
 ## 2. Visualization
-### 
+### matplotlib
 
 
 

@@ -64,7 +64,13 @@ $ cat iperf.txt | grep "-" | awk '{print $3 " " $7}' | head -n 5
 - ネットワーク計測では、ある測定条件において、パラメータ（宛先、統計時間など）を少しずつ変更しながら繰り返し計測を行います。
 - このような反復動作はコンピュータの得意なところで、shell script による自動化により効率的に作業を進められる可能性があります。
 - 以下に、iperf の実行から awk によるデータ加工処理、ファイル出力までを一度に実現する場合のサンプルスクリプトを記載します。以下のスクリプトを ```iperf-test.bash``` などのファイル名をつけて保存しましょう。
-```shell
+> NOTE: **Windows 標準のメモ帳でファイルを作成・保存・実行すると[エラー](https://comp.unix.shell.narkive.com/PZzNXmTv/ambiguous-redirect-error-on-a-simple-shell-script)が発生します**ので、[Visual Studio Code (vscode)](https://code.visualstudio.com/)をインストールして、以下手順（[ウェブページ](https://qiita.com/emiki/items/80b7dcee140f90236311)参考）に従い改行コードを```\n (LF)```に設定しましょう。
+- 変更手順
+  - `ファイル (File)` -> `ユーザ設定 (Preferences)` -> `設定 (Settings)` で設定画面に移動
+  - 検索バーで「eol」を検索すると「Eol設定(Files: Eol)」を見つけることができる ※ Eolとは End of lineの略
+  - デフォルトは「auto」になっているので、「\n (LF)」に変更
+  - 右下の改行コード表示が「LF」 になっていれば変更完了
+```shell　
 #!/bin/bash
 
 echo "Starting iperf3 measurement..."
